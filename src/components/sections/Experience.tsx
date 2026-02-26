@@ -34,7 +34,7 @@ export default function Experience() {
                     isLeft ? "text-right pr-12" : "order-2 pl-12"
                   }`}
                 >
-                  <TimelineCard exp={exp} />
+                  {isLeft && <TimelineCard exp={exp} />}
                 </div>
 
                 {/* Dot on the line */}

@@ -29,19 +29,16 @@ export default function Contact() {
     e.preventDefault();
     setStatus("sending");
 
-    // EmailJS integration placeholder — replace with your keys
     try {
-      // For now, open mailto as fallback
-      const subject = encodeURIComponent(
-        `Portfolio Contact from ${form.name}`
-      );
-      const body = encodeURIComponent(
-        `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
-      );
-      window.open(
-        `mailto:${personalInfo.email}?subject=${subject}&body=${body}`,
-        "_blank"
-      );
+      const res = await fetch("https://script.google.com/macros/s/AKfycbyuR8My5ZL-kkX-G3HlUqGEffJlmHdWww-5g5KMmnZdgAW7REBc2iCOXh7hP68lhS4M-Q/exec", {
+        method: "POST",
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (data.status !== 200) throw new Error(data.message);
+
       setStatus("sent");
       setForm({ name: "", email: "", message: "" });
       setTimeout(() => setStatus("idle"), 3000);

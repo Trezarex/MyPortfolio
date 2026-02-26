@@ -58,7 +58,7 @@ export default function Experience() {
 
 function TimelineCard({ exp }: { exp: (typeof experiences)[0] }) {
   return (
-    <div className="glass rounded-2xl p-5 md:p-6 border border-white/5 hover:border-neon-cyan/20 transition-all duration-300">
+    <div className="glass rounded-2xl p-5 md:p-6 border border-white/5 hover:border-neon-cyan/20 transition-all duration-300 text-left">
       <div className="flex flex-wrap items-center gap-2 mb-2">
         <span className="text-neon-cyan font-heading font-bold text-lg">
           {exp.company}

@@ -29,11 +29,7 @@ export default function Experience() {
                 }`}
               >
                 {/* Desktop: left side content */}
-                <div
-                  className={`hidden md:block w-1/2 ${
-                    isLeft ? "text-right pr-12" : "order-2 pl-12"
-                  }`}
-                >
+                <div className="hidden md:block w-1/2 pr-12 text-right">
                   {isLeft && <TimelineCard exp={exp} />}
                 </div>
 
@@ -42,12 +38,8 @@ export default function Experience() {
                   <div className="w-4 h-4 rounded-full bg-night-900 border-2 border-neon-cyan box-glow-cyan" />
                 </div>
 
-                {/* Desktop: right side (empty or content) */}
-                <div
-                  className={`hidden md:block w-1/2 ${
-                    isLeft ? "order-2 pl-12" : "text-right pr-12"
-                  }`}
-                >
+                {/* Desktop: right side content */}
+                <div className="hidden md:block w-1/2 pl-12">
                   {!isLeft && <TimelineCard exp={exp} />}
                 </div>
 

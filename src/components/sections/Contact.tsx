@@ -30,14 +30,15 @@ export default function Contact() {
     setStatus("sending");
 
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbyuR8My5ZL-kkX-G3HlUqGEffJlmHdWww-5g5KMmnZdgAW7REBc2iCOXh7hP68lhS4M-Q/exec", {
+      const res = await fetch("/api/contact", {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
 
       const data = await res.json();
 
-      if (data.status !== 200) throw new Error(data.message);
+      if (!res.ok || !data.success) throw new Error(data.error ?? "Failed");
 
       setStatus("sent");
       setForm({ name: "", email: "", message: "" });
